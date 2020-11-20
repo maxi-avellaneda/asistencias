@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% block titulo %}Detalle de Programa{% endblock %}
+{% block contenido %}
+  <h1>Beneficio: {{ programa.id }}</h1>
+  {% if messages %}
+      {% for message in messages %}
+          {% if message.tags == 'success' %}  <div class="message">{{ message }}</div>{% endif %}
+      {% endfor %}
+  {% endif %}
+  <p><strong>Programa: {{ programa.programa.nombre}}</strong></p>
+  <p><strong>Persona: {{ programa.persona}}</strong></p>
+  <p><strong>Tipo de Asistencias :</strong></p>
+  <ul>
+    {% for asistencia in programa.tipo_asistencias.all %}
+      <li>{{ asistencia }}</li>
+    {% endfor %}
+  </ul>
+  <p><strong>Fecha de Entrega :{{ programa.fecha_entrega}}</strong></p>
+  <p><strong>Cantidad :{{ programa.cantidad}}</strong></p>
+  
+  
+{% endblock %}
